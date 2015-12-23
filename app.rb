@@ -23,7 +23,8 @@ post '/visit' do
 
   err_hash = {:username => 'Введите имя',
               :phone => 'Введите телефон',
-              :datetime => 'Введите дату и время'}
+              :datetime => 'Введите дату и время',
+              :color => 'Выберите цвет'}
 
   err_hash.each do |key, value|
     if params[key] == ''
