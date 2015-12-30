@@ -27,9 +27,9 @@
   <div class="form-group">
     <label>Ваш мастер:</label>
   	<select name="barber" class="form-control">
-  		<option>Rudy Foeller</option>
-  		<option>Ruud Gullit</option>
-  		<option>Luca Vialli</option>  	
+  		<option <%= @barber == 'Rudy Foeller' ? 'selected' : '' %> >Rudy Foeller</option>
+  		<option <%= @barber == 'Ruud Gullit' ? 'selected' : '' %> >Ruud Gullit</option>
+  		<option <%= @barber == 'Luca Vialli' ? 'selected' : '' %> >Luca Vialli</option>  	
   	</select>  
   </div>
 
