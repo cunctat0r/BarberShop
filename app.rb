@@ -72,3 +72,13 @@ get '/contacts' do
   erb :contacts
 end
 
+get '/showusers' do
+  db = get_db
+  db.results_as_hash = true
+
+  db.execute 'select * from Users' do |row|
+    #erb "#{row['username']} записался на #{row['datestamp']}"
+  end
+
+  erb :showusers
+end
