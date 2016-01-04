@@ -76,11 +76,9 @@ end
 
 get '/showusers' do
   db = get_db
-  db.results_as_hash = true
+  #db.results_as_hash = true
 
-  db.execute 'select * from Users order by id desc' do |row|
-    #erb "#{row['username']} записался на #{row['datestamp']}"
-  end
+  @results = db.execute 'select * from Users order by id desc'
 
   erb :showusers
 end
