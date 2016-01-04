@@ -17,11 +17,19 @@ def seed_db db, barbers
 
 end
 
+def get_barbers
+  db = get_db
+  db.execute 'select * from Barbers'
+end
 
 def get_db
   db = SQLite3::Database.new 'barbershop.sqlite' 
   db.results_as_hash = true
   return db
+end
+
+before '/visit' do
+  @barbers = get_barbers
 end
 
 configure do  
@@ -66,7 +74,7 @@ post '/visit' do
 
   err_hash.each do |key, value|
     if params[key] == ''
-      @error = err_hash[key]
+      @error = err_hash[key]      
       return erb :visit
     end
   end
@@ -81,7 +89,7 @@ post '/visit' do
                 barber, 
                 color
               ) 
-              values (?, ?, ?, ?, ?)', [@username, @phone, @datetime, @barber, @color]
+              values (?, ?, ?, ?, ?)', [@username, @phone, @datetime, @barber, @color]  
 
   erb "Отлично, #{@username}, мастер #{@barber} будет Вас ждать в #{@datetime}"
 
